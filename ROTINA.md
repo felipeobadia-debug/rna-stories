@@ -17,3 +17,13 @@ Story de bom dia publicado todos os dias às 7:20 (America/Sao_Paulo) no Instagr
 - Tema por dia: segunda, coragem para começar a semana; terça a quinta, autocuidado (variar o ângulo); sexta, movimento/esporte e se cuidar no fim de semana (tema "preto"); sábado e domingo, descanso, pausa e afeto. Demais dias: tema "bordo".
 - Proibido: prometer cura ou resultado, citar medicamentos, ativos, fórmulas, preços ou promoções, alegação terapêutica.
 - Não repetir frases dos últimos 30 dias (consultar `stories/*.json`).
+
+# Story pessoal do Obadia (envio diário, postagem manual)
+
+Todo dia a lâmina pessoal (frase estoica/clássica) é gerada e enviada ao Obadia no celular com a legenda e o link para baixar. Ele posta manualmente no Instagram pessoal (não há conta pessoal no Metricool).
+
+1. `stories/pessoal-AAAA-MM-DD.json` com `{"frase", "autor", "obra", "legenda"}`.
+2. `NODE_PATH=$(npm root -g) node tools/render-pessoal.js AAAA-MM-DD` gera `stories/pessoal-AAAA-MM-DD.jpg` (1080x1920).
+3. Commit e push; link para baixar: `https://raw.githubusercontent.com/felipeobadia-debug/rna-stories/main/stories/pessoal-AAAA-MM-DD.jpg`
+
+Regras da frase pessoal: pegada grega/estoica sobre vitória, bem-estar e força interior. Somente autores clássicos: segunda Sêneca, terça Epicteto, quarta Marco Aurélio, quinta um filósofo grego (Aristóteles, Heráclito, Sócrates via Platão, Epicuro, Zenão), sexta Kant ou outro clássico (Cícero, Musônio Rufo, Schopenhauer), sábado Sêneca (Cartas a Lucílio), domingo Epicteto (Discursos) ou Marco Aurélio. Apenas citações com atribuição comprovada, com obra e passagem; se não conseguir confirmar a fonte, troque de frase; nunca frases apócrifas. Não repetir passagens dos últimos 60 dias (`stories/pessoal-*.json`). Legenda de 1 a 2 frases, tom positivo, com 4 a 6 hashtags.
