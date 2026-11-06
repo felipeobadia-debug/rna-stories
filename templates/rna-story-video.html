@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="assets/gsap.min.js"></script>
+    <style>
+      @font-face {
+        font-family: "Fraunces";
+        font-weight: 600;
+        src: url("assets/fonts/fraunces-latin-600-normal.woff2") format("woff2");
+      }
+      :root {
+        --bordo-1: #7a0a49;
+        --bordo-2: #61053a;
+        --bordo-3: #45032a;
+        --ink: #fbf1de;
+        --ink-soft: #e9d3b0;
+        --gold-1: #b58a0a;
+        --gold-2: #d9b23a;
+        --gold-3: #f8e57a;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1080px; height: 1920px; overflow: hidden;
+        background: #000;
+      }
+      #root {
+        position: relative; width: 1080px; height: 1920px; overflow: hidden;
+        font-family: "Inter", -apple-system, "Segoe UI", sans-serif;
+        color: var(--ink);
+      }
+      #root.bordo { background: radial-gradient(120% 80% at 85% 10%, #7a0a49 0%, #61053a 45%, #45032a 100%); }
+      #root.preto { background: radial-gradient(120% 80% at 85% 10%, #2a2622 0%, #151414 50%, #0b0b0c 100%); }
+      #glow {
+        position: absolute; left: 540px; top: 1330px; width: 900px; height: 900px;
+        margin: -450px 0 0 -450px; border-radius: 50%;
+        background: radial-gradient(circle, rgba(248,229,122,.18) 0%, rgba(248,229,122,0) 60%);
+      }
+      #deco { position: absolute; left: 0; top: 0; width: 1080px; height: 1350px; }
+      #dots { transform-origin: 1075px 20px; }
+      .gold {
+        background: linear-gradient(90deg, var(--gold-1) 0%, var(--gold-2) 45%, var(--gold-3) 100%);
+        -webkit-background-clip: text; background-clip: text; color: transparent;
+      }
+      #top {
+        position: absolute; left: 96px; right: 96px; top: 400px;
+        display: flex; align-items: center; gap: 22px;
+      }
+      #tag { font-size: 34px; font-weight: 700; letter-spacing: .34em; text-transform: uppercase; white-space: nowrap; }
+      #rule {
+        flex: 1; height: 2px; transform-origin: 0 50%;
+        background: linear-gradient(90deg, var(--gold-1), var(--gold-3));
+      }
+      #txt { position: absolute; left: 96px; right: 96px; top: 560px; }
+      #q {
+        font-family: "Fraunces", Georgia, serif; font-weight: 600;
+        font-size: 84px; line-height: 1.12; letter-spacing: -.012em; color: var(--ink);
+      }
+      #q .w { display: inline-block; }
+      #a { font-size: 36px; line-height: 1.48; color: var(--ink-soft); margin-top: 40px; max-width: 860px; }
+      #line {
+        position: absolute; left: 96px; right: 96px; top: 1238px; height: 2px;
+        background: linear-gradient(90deg, rgba(181,138,10,0), rgba(217,178,58,.8), rgba(248,229,122,0));
+      }
+      #logo {
+        position: absolute; left: 540px; top: 1272px; width: 240px; margin-left: -120px;
+      }
+      #logo img { width: 240px; height: auto; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="root" class="{{TEMA}}" data-composition-id="main" data-start="0" data-duration="8" data-width="1080" data-height="1920">
+      <div id="bg" class="clip" data-start="0" data-duration="8" data-track-index="0">
+        <div id="glow"></div>
+        <svg id="deco" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#B58A0A"/><stop offset="1" stop-color="#F8E57A"/></linearGradient></defs>
+          <g id="dots" fill="url(#g)" opacity=".16"><circle cx="1375.0" cy="20.0" r="14"/><circle cx="1368.4" cy="82.4" r="14"/><circle cx="1349.1" cy="142.0" r="14"/><circle cx="1317.7" cy="196.3" r="14"/><circle cx="1275.7" cy="242.9" r="14"/><circle cx="1225.0" cy="279.8" r="14"/><circle cx="1167.7" cy="305.3" r="14"/><circle cx="1106.4" cy="318.4" r="14"/><circle cx="1043.6" cy="318.4" r="14"/><circle cx="982.3" cy="305.3" r="14"/><circle cx="925.0" cy="279.8" r="14"/><circle cx="874.3" cy="242.9" r="14"/><circle cx="832.3" cy="196.3" r="14"/><circle cx="800.9" cy="142.0" r="14"/><circle cx="781.6" cy="82.4" r="14"/><circle cx="775.0" cy="20.0" r="14"/><circle cx="781.6" cy="-42.4" r="14"/><circle cx="800.9" cy="-102.0" r="14"/><circle cx="832.3" cy="-156.3" r="14"/><circle cx="874.3" cy="-202.9" r="14"/><circle cx="925.0" cy="-239.8" r="14"/><circle cx="982.3" cy="-265.3" r="14"/><circle cx="1043.6" cy="-278.4" r="14"/><circle cx="1106.4" cy="-278.4" r="14"/><circle cx="1167.7" cy="-265.3" r="14"/><circle cx="1225.0" cy="-239.8" r="14"/><circle cx="1275.7" cy="-202.9" r="14"/><circle cx="1317.7" cy="-156.3" r="14"/><circle cx="1349.1" cy="-102.0" r="14"/><circle cx="1368.4" cy="-42.4" r="14"/><circle cx="1318.2" cy="49.3" r="11"/><circle cx="1304.2" cy="106.7" r="11"/><circle cx="1276.7" cy="159.0" r="11"/><circle cx="1237.6" cy="203.3" r="11"/><circle cx="1189.0" cy="236.8" r="11"/><circle cx="1133.8" cy="257.8" r="11"/><circle cx="1075.2" cy="265.0" r="11"/><circle cx="1016.6" cy="257.9" r="11"/><circle cx="961.3" cy="237.0" r="11"/><circle cx="912.7" cy="203.5" r="11"/><circle cx="873.5" cy="159.3" r="11"/><circle cx="846.0" cy="107.1" r="11"/><circle cx="831.8" cy="49.7" r="11"/><circle cx="831.8" cy="-9.3" r="11"/><circle cx="845.8" cy="-66.7" r="11"/><circle cx="873.3" cy="-119.0" r="11"/><circle cx="912.4" cy="-163.3" r="11"/><circle cx="961.0" cy="-196.8" r="11"/><circle cx="1016.2" cy="-217.8" r="11"/><circle cx="1074.8" cy="-225.0" r="11"/><circle cx="1133.4" cy="-217.9" r="11"/><circle cx="1188.7" cy="-197.0" r="11"/><circle cx="1237.3" cy="-163.5" r="11"/><circle cx="1276.5" cy="-119.3" r="11"/><circle cx="1304.0" cy="-67.1" r="11"/><circle cx="1318.2" cy="-9.7" r="11"/><circle cx="1264.4" cy="66.4" r="8.5"/><circle cx="1243.7" cy="117.8" r="8.5"/><circle cx="1209.3" cy="161.4" r="8.5"/><circle cx="1164.0" cy="193.5" r="8.5"/><circle cx="1111.5" cy="211.5" r="8.5"/><circle cx="1056.1" cy="214.1" r="8.5"/><circle cx="1002.2" cy="200.9" r="8.5"/><circle cx="954.2" cy="173.0" r="8.5"/><circle cx="915.9" cy="132.8" r="8.5"/><circle cx="890.6" cy="83.4" r="8.5"/><circle cx="880.2" cy="28.9" r="8.5"/><circle cx="885.6" cy="-26.4" r="8.5"/><circle cx="906.3" cy="-77.8" r="8.5"/><circle cx="940.7" cy="-121.4" r="8.5"/><circle cx="986.0" cy="-153.5" r="8.5"/><circle cx="1038.5" cy="-171.5" r="8.5"/><circle cx="1093.9" cy="-174.1" r="8.5"/><circle cx="1147.8" cy="-160.9" r="8.5"/><circle cx="1195.8" cy="-133.0" r="8.5"/><circle cx="1234.1" cy="-92.8" r="8.5"/><circle cx="1259.4" cy="-43.4" r="8.5"/><circle cx="1269.8" cy="11.1" r="8.5"/></g>
+        </svg>
+      </div>
+
+      <div id="top" class="clip" data-start="0" data-duration="8" data-track-index="1">
+        <span id="tag" class="gold">Bom dia</span><span id="rule"></span>
+      </div>
+
+      <div id="txt" class="clip" data-start="0" data-duration="8" data-track-index="2">
+        <p id="q" style="font-size: {{FS}}px">{{FRASE_HTML}}</p>
+        <p id="a">{{APOIO}}</p>
+      </div>
+
+      <div id="line" class="clip" data-start="0" data-duration="8" data-track-index="3"></div>
+      <div id="logo" class="clip" data-start="0" data-duration="8" data-track-index="4">
+        <img id="logo-img" src="assets/logo-rna.png" alt="RNA Manipulação Farmacêutica" />
+      </div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      // Fundo: anel de pontos girando bem devagar o tempo todo, brilho respirando.
+      tl.fromTo("#dots", { rotation: -3 }, { rotation: 3, duration: 8, ease: "none" }, 0);
+      tl.fromTo("#glow", { scale: 0.85, opacity: 0.5 }, { scale: 1.1, opacity: 1, duration: 8, ease: "sine.inOut" }, 0);
+      // "BOM DIA" já visível no quadro 0; o fio dourado se desenha.
+      tl.fromTo("#tag", { opacity: 0.35, x: -24 }, { opacity: 1, x: 0, duration: 0.9, ease: "power3.out" }, 0);
+      tl.fromTo("#rule", { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power3.inOut" }, 0.15);
+      // Ritmo: frases longas entram mais rápido para terminar antes da frase de apoio (2,4 s).
+      const NW = document.querySelectorAll("#q .w").length;
+      const STAGGER = NW > 1 ? Math.min(0.16, 1.5 / (NW - 1)) : 0;
+      // Frase: palavra por palavra, subindo e saindo do desfoque.
+      tl.fromTo("#q .w",
+        { opacity: 0, y: 46, filter: "blur(10px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power3.out", stagger: STAGGER }, 0.1);
+      // Palavra de destaque (campo "destaque" do JSON) acende em dourado.
+      if (document.querySelector("#q .w.hl")) {
+        tl.fromTo("#q .w.hl", { color: "#FBF1DE" }, { color: "#F3D978", duration: 0.6, ease: "sine.inOut", immediateRender: false }, 2.2);
+      }
+      // Frase de apoio.
+      tl.fromTo("#a", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 2.4);
+      // Assinatura: linha e logo.
+      tl.fromTo("#line", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 3.3);
+      tl.fromTo("#logo-img", { opacity: 0, scale: 0.86, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.6)" }, 3.6);
+      // Respiro final sutil no logo até o fim.
+      tl.to("#logo-img", { scale: 1.03, duration: 3.2, ease: "sine.inOut" }, 4.8);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

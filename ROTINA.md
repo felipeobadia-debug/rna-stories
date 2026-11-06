@@ -3,12 +3,20 @@
 Story de bom dia publicado todos os dias às 7:20 (America/Sao_Paulo) no Instagram da RNA (@rnamanipulacao), via Metricool (blogId 7545319). Autorizado pelo Obadia em 04/11/2026: conferir às 7:00 e, se estiver tudo certo, publicar sem consultá-lo.
 
 ## Passo a passo
-1. `stories/AAAA-MM-DD.json` com `{"frase", "apoio", "tema", "legenda"}`.
-2. `NODE_PATH=$(npm root -g) node tools/render.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.jpg` (1080x1920). Se o playwright não estiver instalado: `npm install -g playwright` (só o pacote; nunca `playwright install`).
-3. Olhar a imagem: texto inteiro e legível, logo visível, sem `{{` ou `}}`.
-4. Commit e push na branch `main`.
-5. Imagem pública: `https://raw.githubusercontent.com/felipeobadia-debug/rna-stories/main/stories/AAAA-MM-DD.jpg`
-6. Metricool `createScheduledPost`: blogId 7545319, data de hoje 07:20 America/Sao_Paulo, `autoPublish: true`, `draft: false`, providers instagram, `instagramData.type: "STORY"`, media com o link acima, sem texto.
+Padrão desde 06/11/2026 (pedido do Obadia): o story sai ANIMADO (vídeo MP4 de 8 s). A imagem JPG continua sendo gerada como plano B.
+
+1. `stories/AAAA-MM-DD.json` com `{"frase", "apoio", "tema", "destaque", "legenda"}`. `destaque` é UMA palavra da frase (a mais afetiva, ex.: "carinho"), que acende em dourado no vídeo; escreva-a exatamente como está na frase, sem pontuação.
+2. Imagem (plano B): `NODE_PATH=$(npm root -g) node tools/render.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.jpg` (1080x1920). Se o playwright não estiver instalado: `npm install -g playwright` (só o pacote; nunca `playwright install`).
+3. Vídeo (padrão): `NODE_PATH=$(npm root -g) node tools/render-video.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.mp4` (1080x1920, 8 s, 30 fps, H.264 + áudio AAC silencioso). Usa o modelo `templates/rna-story-video.html` e o HyperFrames em versão fixa via `npx`, com telemetria desligada (demora 1 a 2 minutos na primeira vez; precisa de `ffmpeg`). Mesmo tema de cores do dia (bordo ou preto).
+4. Conferir:
+   - Imagem: texto inteiro e legível, logo visível, sem `{{` ou `}}`.
+   - Vídeo: tirar o último quadro com `ffmpeg -v error -y -sseof -0.1 -i stories/AAAA-MM-DD.mp4 -frames:v 1 /tmp/final.png` e olhar: frase inteira, apoio, logo, destaque em dourado, tema certo, sem `{{` ou `}}`. `ffprobe` deve mostrar duração de 8 s.
+5. Commit e push na branch `main` (JSON, JPG e MP4).
+6. Links públicos:
+   - Vídeo: `https://raw.githubusercontent.com/felipeobadia-debug/rna-stories/main/stories/AAAA-MM-DD.mp4`
+   - Imagem: `https://raw.githubusercontent.com/felipeobadia-debug/rna-stories/main/stories/AAAA-MM-DD.jpg`
+7. Metricool `createScheduledPost`: blogId 7545319, data de hoje 07:20 America/Sao_Paulo, `autoPublish: true`, `draft: false`, providers instagram, `instagramData.type: "STORY"`, media com o link do VÍDEO, sem texto.
+8. Plano B: se o vídeo não for gerado (ou não passar na conferência) depois de 1 nova tentativa, ou se o Metricool recusar o vídeo, agende com o link da IMAGEM e avise o Obadia em uma frase que hoje saiu a versão estática e por quê.
 
 ## Regras da frase
 - Frase ORIGINAL da RNA, nunca atribuída a ninguém. Frase principal curta (até ~10 palavras) + frase de apoio de 1 a 2 linhas.
