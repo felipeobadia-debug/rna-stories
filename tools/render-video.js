@@ -62,6 +62,8 @@ const index = path.join(dir, 'index.html');
   // 2) Renderiza com o HyperFrames (sem telemetria, sem checagem de atualização).
   const env = { ...process.env, HYPERFRAMES_NO_TELEMETRY: '1', DO_NOT_TRACK: '1', HYPERFRAMES_NO_UPDATE_CHECK: '1' };
   const mudo = path.join(dir, 'video-mudo.mp4');
+  // Sem acesso ao storage.googleapis.com o HyperFrames não baixa o Chrome; usa o Chrome já instalado.
+  if (!env.HYPERFRAMES_BROWSER_PATH && fs.existsSync('/usr/bin/google-chrome')) env.HYPERFRAMES_BROWSER_PATH = '/usr/bin/google-chrome';
   execFileSync('npx', ['-y', 'hyperframes@' + HF_VERSION, 'render', '-q', 'delivery', '-o', mudo], { cwd: dir, env, stdio: 'inherit' });
 
   // 3) Acrescenta faixa de áudio silenciosa (AAC), que a API do Instagram prefere.
