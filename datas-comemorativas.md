@@ -41,7 +41,6 @@ Fontes das datas: Calendarr (calendarr.com/brasil/datas-comemorativas-da-saude) 
 | 07/04 | Dia Mundial da Saúde | Dia da Saúde |
 | 28/05 | Dia Internacional de Luta pela Saúde da Mulher | Saúde da Mulher |
 | 10/10 | Dia Mundial da Saúde Mental | Saúde Mental |
-| 14/11 | Dia Mundial do Diabetes | Dia do Diabetes |
 
 ## Família (casam com o sábado)
 - Dia das Mães: 2º domingo de maio → homenagem no sábado anterior.
