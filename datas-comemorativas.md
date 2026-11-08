@@ -2,6 +2,8 @@
 
 Pedido do Obadia em 08/11/2026: em datas importantes, principalmente do mercado magistral e da saúde, o story de bom dia sai PERSONALIZADO para a data (no lugar do assunto normal do dia), podendo ter a Hana vestida do profissional homenageado ou um visual temático.
 
+Prévia de todos os selos e datas (aprovada pelo Obadia em 08/11/2026): `docs/galeria-simbolos-e-datas.png`.
+
 Como funciona:
 - O campo `"tag"` do JSON troca o "Bom dia" do topo pelo nome da data (ex.: "Dia do Farmacêutico"). No máximo 22 caracteres; se for maior, abrevie (ex.: "Educação Física").
 - Frase e apoio homenageiam a profissão ou a causa, no tom premium da RNA, sem promessa nem alegação terapêutica.
