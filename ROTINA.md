@@ -1,13 +1,13 @@
 # Rotina do story diário da RNA
 
-Story de bom dia publicado todos os dias às 7:20 (America/Sao_Paulo) no Instagram da RNA (@rnamanipulacao), via Metricool (blogId 7545319). Autorizado pelo Obadia em 04/11/2026: conferir às 7:00 e, se estiver tudo certo, publicar sem consultá-lo.
+Story de bom dia publicado de segunda a sábado às 7:20 (domingo sem story, pedido do Obadia em 08/11/2026) (America/Sao_Paulo) no Instagram da RNA (@rnamanipulacao), via Metricool (blogId 7545319). Autorizado pelo Obadia em 04/11/2026: conferir às 7:00 e, se estiver tudo certo, publicar sem consultá-lo.
 
 ## Passo a passo
 Padrão desde 06/11/2026 (pedido do Obadia): o story sai ANIMADO (vídeo MP4 de 8 s). A imagem JPG continua sendo gerada, mas só é postada em último caso.
 
-1. `stories/AAAA-MM-DD.json` com `{"frase", "apoio", "tema", "destaque", "legenda"}`. `destaque` é UMA palavra da frase (a mais afetiva, ex.: "carinho"), que acende em dourado no vídeo; escreva-a exatamente como está na frase, sem pontuação.
+1. `stories/AAAA-MM-DD.json` com `{"frase", "apoio", "tema", "destaque", "legenda"}` e, se a frase for citação, também `"autor"` e `"obra"` (aparecem logo abaixo da frase como "— Autor, Obra"). `destaque` é UMA palavra da frase (a mais afetiva, ex.: "carinho"), que acende em dourado no vídeo; escreva-a exatamente como está na frase, sem pontuação.
 2. Imagem (plano B): `NODE_PATH=$(npm root -g) node tools/render.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.jpg` (1080x1920). Se o playwright não estiver instalado: `npm install -g playwright` (só o pacote; nunca `playwright install`).
-3. Vídeo (padrão): `NODE_PATH=$(npm root -g) node tools/render-video.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.mp4` (1080x1920, 8 s, 30 fps, H.264 + áudio AAC silencioso). Usa o modelo `templates/rna-story-video.html` e o HyperFrames em versão fixa via `npx`, com telemetria desligada (demora 1 a 2 minutos na primeira vez; precisa de `ffmpeg`). Mesmo tema de cores do dia (bordo ou preto).
+3. Vídeo (padrão): `NODE_PATH=$(npm root -g) node tools/render-video.js AAAA-MM-DD` gera `stories/AAAA-MM-DD.mp4` (1080x1920, 8 s, 30 fps, H.264 + áudio AAC silencioso). Usa o modelo `templates/rna-story-video.html` e o HyperFrames em versão fixa via `npx`, com telemetria desligada (demora 1 a 2 minutos na primeira vez; precisa de `ffmpeg`). Mesmo tema de cores do dia (`bordo`, `branco` ou `preto`).
 4. Conferir:
    - Imagem: texto inteiro e legível, logo visível, sem `{{` ou `}}`.
    - Vídeo: tirar o último quadro com `ffmpeg -v error -y -sseof -0.1 -i stories/AAAA-MM-DD.mp4 -frames:v 1 /tmp/final.png` e olhar: frase inteira, apoio, logo, destaque em dourado, tema certo, sem `{{` ou `}}`. `ffprobe` deve mostrar duração de 8 s.
@@ -18,11 +18,27 @@ Padrão desde 06/11/2026 (pedido do Obadia): o story sai ANIMADO (vídeo MP4 de 
 7. Metricool `createScheduledPost`: blogId 7545319, data de hoje 07:20 America/Sao_Paulo, `autoPublish: true`, `draft: false`, providers instagram, `instagramData.type: "STORY"`, media com o link do VÍDEO, sem texto.
 8. Último recurso: o estático só sai se o problema com a animação for insolúvel. Antes, leia o erro e resolva a causa (instalar playwright ou ffmpeg, limpar o cache do npx com `rm -rf ~/.npm/_npx`, encurtar a frase, corrigir o `destaque`), quantas vezes for útil enquanto houver tempo para agendar até 7:18. Se o Metricool recusar o vídeo, tente corrigir e reenviar pelo menos 2 vezes. Só então agende com o link da IMAGEM, como era feito antes, e avise o Obadia em uma frase que hoje saiu a versão estática e por quê.
 
+## Cores por dia (definido pelo Obadia em 08/11/2026)
+Todos os dias o story sai animado (vídeo). Campo `tema` do JSON:
+- Segunda, quarta e sábado: `bordo` (fundo bordô, textos claros, dourado nos detalhes).
+- Terça e quinta: `branco` (fundo branco, todos os dizeres em dourado escuro).
+- Sexta: `preto`.
+- Domingo: sem story.
+
+## Assunto por dia (definido pelo Obadia em 08/11/2026)
+- Segunda: força e encorajamento. "Reúna suas armas e parta para a guerra": coragem, garra, começar a semana com tudo.
+- Terça: beleza e autocuidado.
+- Quarta: saúde mental. Recarregar as energias, respirar e seguir em frente.
+- Quinta: mensagem bem-humorada sobre se cuidar e "não deixar a peteca cair". Leve, divertida, com sorriso.
+- Sexta: fechar a semana, olhar o que passou e recalcular a rota da próxima. Lembrar de se exercitar e se hidratar bem no fim de semana.
+- Sábado: família. Curtir quem você ama e fazer valer cada segundo juntos.
+As ideias centrais são fixas, mas as frases devem VARIAR de semana a semana (ângulo, imagem, vocabulário). Pode buscar inspiração na internet.
+
 ## Regras da frase
-- Frase ORIGINAL da RNA, nunca atribuída a ninguém. Frase principal curta (até ~10 palavras) + frase de apoio de 1 a 2 linhas.
-- Tom: tocante, elegante, feminino e afetivo (pedido do Obadia em 04/11/2026). Público principal: mulheres.
+- Frase principal curta (até ~10 palavras) + frase de apoio de 1 a 2 linhas.
+- Pode ser frase original da RNA (sem autor) ou citação de filósofo/pensador. Se for citação, é OBRIGATÓRIO preencher `autor` e `obra` (com passagem, quando houver), e só usar citação com atribuição confirmada em fonte confiável; nunca frase apócrifa. Se não confirmar, use frase original. Nunca atribua frase original a alguém. A frase de apoio é sempre da RNA.
+- Tom: elegante e afetivo, público principal feminino; o tom de cada dia segue o assunto acima (segunda mais forte, quinta mais divertida).
 - Puxar para a cultura da RNA: cuidado sob medida, atendimento humanizado, qualidade, bem-estar, autocuidado, longevidade, esporte.
-- Tema por dia: segunda, coragem para começar a semana; terça a quinta, autocuidado (variar o ângulo); sexta, movimento/esporte e se cuidar no fim de semana (tema "preto"); sábado e domingo, descanso, pausa e afeto. Demais dias: tema "bordo".
 - Proibido: prometer cura ou resultado, citar medicamentos, ativos, fórmulas, preços ou promoções, alegação terapêutica.
 - Não repetir frases dos últimos 30 dias (consultar `stories/*.json`).
 

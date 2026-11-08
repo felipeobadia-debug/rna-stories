@@ -67,6 +67,18 @@
         position: absolute; left: 540px; top: 1272px; width: 240px; margin-left: -120px;
       }
       #logo img { width: 240px; height: auto; display: block; }
+      #root.branco { background: #ffffff; color: #8c6a08; }
+      #root.branco #glow { background: radial-gradient(circle, rgba(201,162,39,.10) 0%, rgba(201,162,39,0) 60%); }
+      #root.branco .gold { background: linear-gradient(90deg, #8c6a08 0%, #b58a0a 55%, #c9a227 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      #root.branco #q { color: #8a6806; }
+      #root.branco #a { color: #9a7a2e; }
+      #root.branco #rule { background: linear-gradient(90deg, #b58a0a, #e3c55a); }
+      #root.branco #line { background: linear-gradient(90deg, rgba(181,138,10,0), rgba(181,138,10,.55), rgba(181,138,10,0)); }
+      #root.branco #dots { opacity: .24; }
+      #root.branco #logo img { filter: saturate(1.15) brightness(.9); }
+      #a2 { font-size: 30px; letter-spacing: .06em; color: #d9b23a; margin-top: 22px; }
+      #a2:empty { display: none; }
+      #root.branco #a2 { color: #8c6a08; }
     </style>
   </head>
   <body>
@@ -85,6 +97,7 @@
 
       <div id="txt" class="clip" data-start="0" data-duration="8" data-track-index="2">
         <p id="q" style="font-size: {{FS}}px">{{FRASE_HTML}}</p>
+        <p id="a2">{{AUTOR}}</p>
         <p id="a">{{APOIO}}</p>
       </div>
 
@@ -110,10 +123,11 @@
         { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.7, ease: "power3.out", stagger: STAGGER }, 0.1);
       // Palavra de destaque (campo "destaque" do JSON) acende em dourado.
       if (document.querySelector("#q .w.hl")) {
-        tl.fromTo("#q .w.hl", { color: "#FBF1DE" }, { color: "#F3D978", duration: 0.6, ease: "sine.inOut", immediateRender: false }, 2.2);
+        const BR = document.getElementById("root").classList.contains("branco");
+        tl.fromTo("#q .w.hl", { color: BR ? "#8A6806" : "#FBF1DE" }, { color: BR ? "#C99A12" : "#F3D978", duration: 0.6, ease: "sine.inOut", immediateRender: false }, 2.2);
       }
       // Frase de apoio.
-      tl.fromTo("#a", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 2.4);
+      tl.fromTo("#a, #a2", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" }, 2.4);
       // Assinatura: linha e logo.
       tl.fromTo("#line", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 1.0, ease: "power2.inOut" }, 3.3);
       tl.fromTo("#logo-img", { opacity: 0, scale: 0.86, y: 20 }, { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.6)" }, 3.6);

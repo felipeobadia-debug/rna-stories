@@ -1,5 +1,5 @@
 // Uso: node tools/render-video.js AAAA-MM-DD
-// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema, destaque?}) e gera stories/AAAA-MM-DD.mp4
+// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, destaque?, autor?, obra?}) e gera stories/AAAA-MM-DD.mp4
 // (story animado de 8 s, 1080x1920, 30 fps, H.264 + faixa de áudio silenciosa).
 // Usa o modelo templates/rna-story-video.html e o HyperFrames (versão fixa, sem telemetria).
 // Precisa de: playwright (NODE_PATH=$(npm root -g)), npx e ffmpeg.
@@ -13,6 +13,7 @@ const d = process.argv[2];
 if (!/^\d{4}-\d{2}-\d{2}$/.test(d || '')) { console.error('data inválida'); process.exit(1); }
 const j = JSON.parse(fs.readFileSync(path.join(root, 'stories', d + '.json'), 'utf8'));
 const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const TEMA = ['preto', 'branco'].includes(j.tema) ? j.tema : 'bordo';
 const norm = s => String(s || '').toLowerCase().normalize('NFC').replace(/[^\p{L}\p{N}-]/gu, '');
 
 // Frase palavra por palavra; a palavra "destaque" (opcional) acende em dourado.
@@ -36,7 +37,8 @@ fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify({ id: 'rna-story-' 
 
 const tpl = fs.readFileSync(path.join(root, 'templates', 'rna-story-video.html'), 'utf8');
 const build = fs_ => tpl
-  .replaceAll('{{TEMA}}', j.tema === 'preto' ? 'preto' : 'bordo')
+  .replaceAll('{{TEMA}}', TEMA)
+  .replaceAll('{{AUTOR}}', j.autor ? esc('— ' + j.autor + (j.obra ? ', ' + j.obra : '')) : '')
   .replaceAll('{{FRASE_HTML}}', fraseHtml)
   .replaceAll('{{APOIO}}', esc(j.apoio))
   .replaceAll('{{FS}}', String(fs_));
@@ -71,5 +73,5 @@ const index = path.join(dir, 'index.html');
   execFileSync('ffmpeg', ['-v', 'error', '-y', '-i', mudo, '-f', 'lavfi', '-i', 'anullsrc=channel_layout=stereo:sample_rate=48000',
     '-c:v', 'copy', '-c:a', 'aac', '-b:a', '128k', '-shortest', '-movflags', '+faststart', out]);
   fs.rmSync(dir, { recursive: true, force: true });
-  console.log('ok stories/' + d + '.mp4 (frase ' + size + 'px, tema ' + (j.tema === 'preto' ? 'preto' : 'bordo') + (marcou ? ', destaque "' + j.destaque + '"' : '') + ')');
+  console.log('ok stories/' + d + '.mp4 (frase ' + size + 'px, tema ' + TEMA + (marcou ? ', destaque "' + j.destaque + '"' : '') + ')');
 })().catch(e => { console.error(e); process.exit(1); });

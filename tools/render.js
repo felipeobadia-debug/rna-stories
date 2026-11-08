@@ -1,5 +1,5 @@
 // Uso: node tools/render.js AAAA-MM-DD
-// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema}) e gera stories/AAAA-MM-DD.jpg (1080x1920).
+// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, autor?, obra?}) e gera stories/AAAA-MM-DD.jpg (1080x1920).
 const fs=require('fs'),path=require('path');
 const {chromium}=require('playwright');
 const root=path.join(__dirname,'..'); const d=process.argv[2];
@@ -8,7 +8,7 @@ const j=JSON.parse(fs.readFileSync(path.join(root,'stories',d+'.json'),'utf8'));
 const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const font=fs.readFileSync(path.join(root,'templates','fraunces-latin-600-normal.woff2')).toString('base64');
 let h=fs.readFileSync(path.join(root,'templates','rna-story.html'),'utf8')
- .replaceAll('__FONT__',font).replaceAll('{{FRASE}}',esc(j.frase)).replaceAll('{{APOIO}}',esc(j.apoio)).replaceAll('{{TEMA}}',j.tema==='preto'?'preto':'bordo');
+ .replaceAll('__FONT__',font).replaceAll('{{FRASE}}',esc(j.frase)).replaceAll('{{APOIO}}',esc(j.apoio)).replaceAll('{{TEMA}}',['preto','branco'].includes(j.tema)?j.tema:'bordo').replaceAll('{{AUTOR}}',j.autor?esc('— '+j.autor+(j.obra?', '+j.obra:'')):'');
 const tmp=path.join(require('os').tmpdir(),'rna-story-'+d+'.html'); fs.writeFileSync(tmp,h);
 (async()=>{const b=await chromium.launch({executablePath:'/opt/pw-browsers/chromium'});
 const p=await b.newPage({viewport:{width:1080,height:1920}});await p.goto('file://'+tmp);await p.waitForTimeout(600);

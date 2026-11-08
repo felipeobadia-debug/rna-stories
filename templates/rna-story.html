@@ -23,7 +23,19 @@ svg.deco{position:absolute;inset:0;width:1080px;height:1350px}
 .foot img{width:230px;height:auto;display:block}
 .lines{position:absolute;left:96px;right:96px;bottom:400px;height:2px;background:linear-gradient(90deg,rgba(181,138,10,0),rgba(217,178,58,.7),rgba(248,229,122,0))}
 </style>
-<style>#card{height:1920px!important}.top{top:400px!important}.txt{top:500px!important}.lines{bottom:680px!important}.foot{bottom:360px!important}</style></head>
+<style>#card{height:1920px!important}.top{top:400px!important}.txt{top:500px!important}.lines{bottom:680px!important}.foot{bottom:360px!important}</style><style>
+#a2{font-size:30px;letter-spacing:.06em;color:#D9B23A;margin:22px 0 0}
+#a2:empty{display:none}
+#card.branco{background:#FFFFFF;color:#8C6A08}
+#card.branco .gold{background:linear-gradient(90deg,#8C6A08 0%,#B58A0A 55%,#C9A227 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#card.branco #q{background:linear-gradient(95deg,#7E5E05 0%,#A88008 50%,#C29A1E 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+#card.branco #a{color:#9A7A2E}
+#card.branco #a2{color:#8C6A08}
+#card.branco .rule{background:linear-gradient(90deg,#B58A0A,#E3C55A)}
+#card.branco .lines{background:linear-gradient(90deg,rgba(181,138,10,0),rgba(181,138,10,.55),rgba(181,138,10,0))}
+#card.branco svg.deco g{opacity:.22}
+#card.branco .foot img{filter:saturate(1.15) brightness(.9)}
+</style></head>
 <body>
 <div id="card" class="{{TEMA}}">
 <svg class="deco" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
@@ -33,6 +45,7 @@ svg.deco{position:absolute;inset:0;width:1080px;height:1350px}
 <div class="top"><span class="tag gold">Bom dia</span><span class="rule"></span></div>
 <div class="txt">
   <p id="q">{{FRASE}}</p>
+  <p id="a2">{{AUTOR}}</p>
   <p id="a">{{APOIO}}</p>
 </div>
 <div class="lines"></div>
