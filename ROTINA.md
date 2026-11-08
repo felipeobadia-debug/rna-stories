@@ -26,7 +26,7 @@ Todos os dias o story sai animado (vídeo). Campo `tema` do JSON:
 - Domingo: sem story.
 
 ## Assunto por dia (definido pelo Obadia em 08/11/2026)
-- Segunda: força e encorajamento. "Reúna suas armas e parta para a guerra": coragem, garra, começar a semana com tudo.
+- Segunda: força e encorajamento. Espírito: "reúna suas armas e parta pra guerra, sua semana precisa de você". ATENÇÃO (pedido do Obadia em 08/11/2026): esse é o ESPÍRITO, não o vocabulário. A RNA é farmácia de manipulação boutique, luxo; nada de estética de lutador, academia ou "guerreira". Evitar palavras como guerra, luta, batalha, arma, ringue, soco, "bora", "pra cima", "sangue nos olhos". Traduzir em linguagem elegante e serena: coragem, determinação, presença, protagonismo, confiança, "a semana precisa de você". Força com sofisticação, para a mulher se sentir convidada, não intimidada.
 - Terça: beleza e autocuidado.
 - Quarta: saúde mental. Recarregar as energias, respirar e seguir em frente.
 - Quinta: mensagem bem-humorada sobre se cuidar e "não deixar a peteca cair". Leve, divertida, com sorriso.
