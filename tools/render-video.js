@@ -1,5 +1,5 @@
 // Uso: node tools/render-video.js AAAA-MM-DD
-// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, destaque?, autor?, obra?, tag?}) e gera stories/AAAA-MM-DD.mp4
+// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, destaque?, autor?, obra?, tag?, hana?}) e gera stories/AAAA-MM-DD.mp4
 // (story animado de 8 s, 1080x1920, 30 fps, H.264 + faixa de áudio silenciosa).
 // Usa o modelo templates/rna-story-video.html e o HyperFrames (versão fixa, sem telemetria).
 // Precisa de: playwright (NODE_PATH=$(npm root -g)), npx e ffmpeg.
@@ -35,9 +35,18 @@ fs.copyFileSync(path.join(root, 'templates', 'fraunces-latin-600-normal.woff2'),
 fs.writeFileSync(path.join(dir, 'hyperframes.json'), JSON.stringify({ paths: { assets: 'assets' }, authoringSkill: 'hyperframes' }, null, 2));
 fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify({ id: 'rna-story-' + d, name: 'rna-story-' + d }, null, 2));
 
+let hanaRel = '';
+if (j.hana) {
+  const hp = path.join(root, j.hana);
+  if (!fs.existsSync(hp)) { console.error('imagem da Hana não encontrada: ' + j.hana); process.exit(1); }
+  hanaRel = 'assets/hana' + path.extname(hp).toLowerCase();
+  fs.copyFileSync(hp, path.join(dir, hanaRel));
+}
 const tpl = fs.readFileSync(path.join(root, 'templates', 'rna-story-video.html'), 'utf8');
 const build = fs_ => tpl
   .replaceAll('{{TEMA}}', TEMA)
+  .replaceAll('{{COMHANA}}', hanaRel ? ' comhana' : '')
+  .replaceAll('{{HANA_SRC}}', hanaRel)
   .replaceAll('{{TAG}}', esc(j.tag || 'Bom dia'))
   .replaceAll('{{TAGFS}}', String(Math.min(34, Math.floor(640 / (String(j.tag || 'Bom dia').length * 0.95)))))
   .replaceAll('{{AUTOR}}', j.autor ? esc('— ' + j.autor + (j.obra ? ', ' + j.obra : '')) : '')
@@ -55,9 +64,10 @@ const index = path.join(dir, 'index.html');
   const size = await p.evaluate(async () => {
     await document.fonts.ready;
     const q = document.getElementById('q'), txt = document.getElementById('txt');
-    let s = 84;
+    const lim = document.getElementById('root').classList.contains('comhana') ? 410 : 640;
+    let s = lim < 640 ? 66 : 84; q.style.fontSize = s + 'px';
     // O bloco de texto vai de 560 px até a linha dourada em 1238 px.
-    while (txt.getBoundingClientRect().height > 640 && s > 50) { s -= 2; q.style.fontSize = s + 'px'; }
+    while (txt.getBoundingClientRect().height > lim && s > 46) { s -= 2; q.style.fontSize = s + 'px'; }
     return s;
   });
   await b.close();
