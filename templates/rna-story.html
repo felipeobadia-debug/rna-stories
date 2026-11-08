@@ -36,6 +36,13 @@ svg.deco{position:absolute;inset:0;width:1080px;height:1350px}
 #card.branco svg.deco g{opacity:.22}
 #card.branco .foot img{filter:saturate(1.15) brightness(.9)}
 </style><style>
+#selo{display:none}
+#card.comselo #selo{display:block;position:absolute;left:330px;top:940px;width:420px;height:420px}
+#card.comselo .top{top:300px!important}
+#card.comselo .txt{top:390px!important;height:520px!important;justify-content:flex-start}
+#card.comselo .lines{display:none}
+#card.comselo .foot{bottom:300px!important}
+#card.comselo .foot img{width:150px}
 #hana{display:none}
 #card.comhana #hana{display:block;position:absolute;left:305px;top:930px;width:470px;height:560px;border-radius:235px 235px 28px 28px;overflow:hidden;border:3px solid #D9B23A;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 #card.comhana #hana img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
@@ -46,7 +53,8 @@ svg.deco{position:absolute;inset:0;width:1080px;height:1350px}
 #card.comhana .foot img{width:140px}
 </style></head>
 <body>
-<div id="card" class="{{TEMA}}{{COMHANA}}">
+<div id="card" class="{{TEMA}}{{COMHANA}}{{COMSELO}}">
+<div id="selo">{{SELO}}</div>
 <div id="hana"><img src="{{HANA_SRC}}" alt=""></div>
 <svg class="deco" viewBox="0 0 1080 1350" xmlns="http://www.w3.org/2000/svg">
   <defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="#B58A0A"/><stop offset="1" stop-color="#F8E57A"/></linearGradient></defs>
