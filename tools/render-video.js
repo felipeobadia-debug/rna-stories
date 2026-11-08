@@ -64,8 +64,8 @@ const index = path.join(dir, 'index.html');
   const size = await p.evaluate(async () => {
     await document.fonts.ready;
     const q = document.getElementById('q'), txt = document.getElementById('txt');
-    const lim = document.getElementById('root').classList.contains('comhana') ? 410 : 640;
-    let s = lim < 640 ? 66 : 84; q.style.fontSize = s + 'px';
+    const lim = document.getElementById('root').classList.contains('comhana') ? 520 : 640;
+    let s = lim < 640 ? 76 : 84; q.style.fontSize = s + 'px';
     // O bloco de texto vai de 560 px até a linha dourada em 1238 px.
     while (txt.getBoundingClientRect().height > lim && s > 46) { s -= 2; q.style.fontSize = s + 'px'; }
     return s;
