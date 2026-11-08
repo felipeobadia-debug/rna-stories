@@ -8,7 +8,7 @@ Como funciona:
 - Data que cai no domingo (dia sem story) é homenageada no SÁBADO anterior, com a frase no futuro ("amanhã é...").
 - O tema de cores continua o do dia da semana.
 - A tarefa semanal (segunda) prepara com antecedência o JSON das datas da semana seguinte e mostra na página de aprovação do Chefe; a tarefa diária usa o JSON pronto.
-- Hana: só entra se houver imagem dela pronta e aprovada (com rótulo de IA). Sem imagem, vai a versão temática.
+- Hana = a boneca loira em estilo 3D/cartoon dos posts da RNA (ex.: carrossel de 09/11/2026, feed/2026-11-06-teste/02.jpg, a de rabo de cavalo). Só entra se houver imagem dela pronta e aprovada para a data (com rótulo de IA, isAiGenerated true). Sem imagem, vai a versão temática.
 
 Fontes das datas: Calendarr (calendarr.com/brasil/datas-comemorativas-da-saude) e Estado de Minas/Ministério da Saúde (em.com.br, 14/03/2023), lidas em 08/11/2026. Datas que não estavam nas fontes ficaram de fora; antes de incluir uma nova, confirme em fonte confiável.
 
@@ -47,5 +47,5 @@ Fontes das datas: Calendarr (calendarr.com/brasil/datas-comemorativas-da-saude) 
 - Dia das Mães: 2º domingo de maio → homenagem no sábado anterior.
 - Dia dos Pais: 2º domingo de agosto → homenagem no sábado anterior.
 
-## Fora da lista de propósito
-Datas de doenças graves e causas delicadas (prevenção do suicídio, Aids, câncer) não entram no bom dia sem o Chefe pedir: o tom leve do bom dia não combina e há risco de soar oportunista.
+## Proibido (decisão do Obadia em 08/11/2026)
+Nada de temas pesados no Instagram da RNA: câncer, Aids, prevenção do suicídio, doenças graves e afins são SUPER DISPENSÁVEIS. Não entram no bom dia nem em nenhum outro post, nem como data comemorativa.

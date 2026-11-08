@@ -42,7 +42,7 @@ Em datas importantes (principalmente do mercado magistral e da saúde: farmacêu
 - Pode ser frase original da RNA (sem autor) ou citação. Preferência (Obadia, 08/11/2026): autores brasileiros, como Rubem Alves, Nelson Rodrigues e Clarice Lispector; de vez em quando um grego, um francês ou outro que sirva à proposta. A citação vai no formato de citação, só mencionando a autoria ("— Autor, Obra"), para deixar claro que a frase não é nossa. Se for citação, é OBRIGATÓRIO preencher `autor` e `obra` (com passagem, quando houver), e só usar citação com atribuição confirmada em fonte confiável; nunca frase apócrifa. Se não confirmar, use frase original. Nunca atribua frase original a alguém. A frase de apoio é sempre da RNA.
 - Tom: elegante e afetivo, público principal feminino; o tom de cada dia segue o assunto acima (segunda mais forte, quinta mais divertida).
 - Puxar para a cultura da RNA: cuidado sob medida, atendimento humanizado, qualidade, bem-estar, autocuidado, longevidade, esporte.
-- Proibido: prometer cura ou resultado, citar medicamentos, ativos, fórmulas, preços ou promoções, alegação terapêutica.
+- Proibido: temas pesados (câncer, Aids, suicídio, doenças graves), prometer cura ou resultado, citar medicamentos, ativos, fórmulas, preços ou promoções, alegação terapêutica.
 - Não repetir frases dos últimos 30 dias (consultar `stories/*.json`).
 
 # Story pessoal do Obadia (envio diário, postagem manual)
