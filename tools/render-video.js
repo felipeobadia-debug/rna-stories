@@ -1,5 +1,5 @@
 // Uso: node tools/render-video.js AAAA-MM-DD
-// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, destaque?, autor?, obra?}) e gera stories/AAAA-MM-DD.mp4
+// Lê stories/AAAA-MM-DD.json ({frase, apoio, tema: bordo|branco|preto, destaque?, autor?, obra?, tag?}) e gera stories/AAAA-MM-DD.mp4
 // (story animado de 8 s, 1080x1920, 30 fps, H.264 + faixa de áudio silenciosa).
 // Usa o modelo templates/rna-story-video.html e o HyperFrames (versão fixa, sem telemetria).
 // Precisa de: playwright (NODE_PATH=$(npm root -g)), npx e ffmpeg.
@@ -38,6 +38,8 @@ fs.writeFileSync(path.join(dir, 'meta.json'), JSON.stringify({ id: 'rna-story-' 
 const tpl = fs.readFileSync(path.join(root, 'templates', 'rna-story-video.html'), 'utf8');
 const build = fs_ => tpl
   .replaceAll('{{TEMA}}', TEMA)
+  .replaceAll('{{TAG}}', esc(j.tag || 'Bom dia'))
+  .replaceAll('{{TAGFS}}', String(Math.min(34, Math.floor(640 / (String(j.tag || 'Bom dia').length * 0.95)))))
   .replaceAll('{{AUTOR}}', j.autor ? esc('— ' + j.autor + (j.obra ? ', ' + j.obra : '')) : '')
   .replaceAll('{{FRASE_HTML}}', fraseHtml)
   .replaceAll('{{APOIO}}', esc(j.apoio))

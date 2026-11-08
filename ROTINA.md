@@ -29,14 +29,17 @@ Todos os dias o story sai animado (vídeo). Campo `tema` do JSON:
 - Segunda: força e encorajamento. Espírito: "reúna suas armas e parta pra guerra, sua semana precisa de você". ATENÇÃO (pedido do Obadia em 08/11/2026): esse é o ESPÍRITO, não o vocabulário. A RNA é farmácia de manipulação boutique, luxo; nada de estética de lutador, academia ou "guerreira". Evitar palavras como guerra, luta, batalha, arma, ringue, soco, "bora", "pra cima", "sangue nos olhos". Traduzir em linguagem elegante e serena: coragem, determinação, presença, protagonismo, confiança, "a semana precisa de você". Força com sofisticação, para a mulher se sentir convidada, não intimidada.
 - Terça: beleza e autocuidado.
 - Quarta: saúde mental. Recarregar as energias, respirar e seguir em frente.
-- Quinta: mensagem bem-humorada sobre se cuidar e "não deixar a peteca cair". Leve, divertida, com sorriso.
+- Quinta: humor leve e elegante, com sorriso de canto de boca, sobre se cuidar e "não deixar a peteca cair". Sem gíria pesada nem meme. Referência aprovada pelo Obadia: "A peteca pode até balançar. Cair, hoje não. Afinal, amanhã ainda é sexta."
 - Sexta: fechar a semana, olhar o que passou e recalcular a rota da próxima. Lembrar de se exercitar e se hidratar bem no fim de semana.
 - Sábado: família. Curtir quem você ama e fazer valer cada segundo juntos.
 As ideias centrais são fixas, mas as frases devem VARIAR de semana a semana (ângulo, imagem, vocabulário). Pode buscar inspiração na internet.
 
+## Datas comemorativas
+Em datas importantes (principalmente do mercado magistral e da saúde: farmacêutico, médico, nutricionista, profissional de educação física etc.), o bom dia sai personalizado para a data, no lugar do assunto do dia. Lista, regras e campo `"tag"` em `datas-comemorativas.md`.
+
 ## Regras da frase
 - Frase principal curta (até ~10 palavras) + frase de apoio de 1 a 2 linhas.
-- Pode ser frase original da RNA (sem autor) ou citação de filósofo/pensador. Se for citação, é OBRIGATÓRIO preencher `autor` e `obra` (com passagem, quando houver), e só usar citação com atribuição confirmada em fonte confiável; nunca frase apócrifa. Se não confirmar, use frase original. Nunca atribua frase original a alguém. A frase de apoio é sempre da RNA.
+- Pode ser frase original da RNA (sem autor) ou citação. Preferência (Obadia, 08/11/2026): autores brasileiros, como Rubem Alves, Nelson Rodrigues e Clarice Lispector; de vez em quando um grego, um francês ou outro que sirva à proposta. A citação vai no formato de citação, só mencionando a autoria ("— Autor, Obra"), para deixar claro que a frase não é nossa. Se for citação, é OBRIGATÓRIO preencher `autor` e `obra` (com passagem, quando houver), e só usar citação com atribuição confirmada em fonte confiável; nunca frase apócrifa. Se não confirmar, use frase original. Nunca atribua frase original a alguém. A frase de apoio é sempre da RNA.
 - Tom: elegante e afetivo, público principal feminino; o tom de cada dia segue o assunto acima (segunda mais forte, quinta mais divertida).
 - Puxar para a cultura da RNA: cuidado sob medida, atendimento humanizado, qualidade, bem-estar, autocuidado, longevidade, esporte.
 - Proibido: prometer cura ou resultado, citar medicamentos, ativos, fórmulas, preços ou promoções, alegação terapêutica.
